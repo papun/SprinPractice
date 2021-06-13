@@ -19,12 +19,12 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
-				sh 'mvn clean package'
+				bat 'mvn clean package'
 			}
 		}
 		stage('Run') {
 			steps {
-				sh 'java -jar SpringBootDataRestDemo-1.0.jar'
+				bat 'java -jar SpringBootDataRestDemo-1.0.jar'
 			}
 		}
 	}
