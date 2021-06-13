@@ -11,6 +11,12 @@ pipeline {
 				bat 'mvn clean package'
 			}
 		}
+		stage('Run') {
+			steps {
+				bat 'cd target'
+				bat 'java -jar SpringBootDataRestDemo-1.0.jar'
+			}
+		}
 		
 	}
 }
