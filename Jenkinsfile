@@ -19,6 +19,11 @@ pipeline {
 		}
 		stage('Build') {
 			steps {
+				mvn clean package
+			}
+		}
+		stage('Run') {
+			steps {
 				sh 'java -jar SpringBootDataRestDemo-1.0.jar'
 			}
 		}
