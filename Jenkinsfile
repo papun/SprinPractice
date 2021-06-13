@@ -16,9 +16,18 @@ pipeline {
 				bat 'cd'
 			}
 		}
+		stage('Change Dir') {
+			steps {
+				sh "pwd"
+    				dir('target') {
+      					sh "pwd"
+   				 }
+    				sh "pwd"
+			}
+		}
 		stage('Run') {
 			steps {
-				bat 'java -jar target/SpringBootDataRestDemo-1.0.jar'
+				bat 'java -jar SpringBootDataRestDemo-1.0.jar'
 			}
 		}
 		
