@@ -18,11 +18,13 @@ pipeline {
 		}
 		stage('Change Dir') {
 			steps {
-				sh "pwd"
+				echo '================================================'
+				bat 'cd'
     				dir('target') {
-      					sh "pwd"
+      					bat 'cd'
    				 }
-    				sh "pwd"
+    				bat 'cd'
+				echo '================================================'
 			}
 		}
 		stage('Run') {
