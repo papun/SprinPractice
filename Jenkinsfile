@@ -1,40 +1,16 @@
 pipeline {
 	agent any
 	stages {
-		stage('One') {
+		stage('Clone') {
 			steps {
-				echo 'Hi, this is Soumitra from roytuts'
+				echo 'Hi, this is Papun'
 			}
 		}
 		
 		stage('Two') {
 			steps {
-				input('Do you want to proceed?')
+				git branch: 'main', credentialsId: 'SpringGitHUb', url: 'https://github.com/papun/SprinPractice.git'
 			}
 		}
-		
-		stage('Build') {
-            steps {
-                bat './gradlew build'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                bat './gradlew test'
-            }
-        }
-        
-        stage('Check') {
-            steps {
-                bat './gradlew check'
-            }
-        }      
-		
-		stage('Five') {
-			steps {
-				echo 'Finished'
-			}
-		}		
 	}
 }
