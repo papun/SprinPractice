@@ -16,20 +16,16 @@ pipeline {
 				bat 'cd'
 			}
 		}
-		stage('Change Dir') {
+		stage('docker build') {
 			steps {
-				echo '================================================++++'
-				bat 'cd'
-    				dir('target') {
-      					bat 'cd'
-   				 }
-    				bat 'cd'
-				echo '================================================++++'
+				bat 'docker build -t myapp:v1 .'
+				
+				bat 'docker run -d -p 8081:8081 myapp:v1'
 			}
 		}
 		stage('Run') {
 			steps {
-				bat 'java -jar SpringBootDataRestDemo-1.0.jar'
+				echo 'finished/////'
 			}
 		}
 		
