@@ -13,8 +13,7 @@ pipeline {
 		}
 		stage('Run') {
 			steps {
-				bat 'cd target'
-				bat 'java -jar SpringBootDataRestDemo-1.0.jar'
+				bat 'java -jar target/SpringBootDataRestDemo-1.0.jar'
 			}
 		}
 		
