@@ -1,17 +1,6 @@
 pipeline {
 	agent any
-	stages {
-		stage('Echo') {
-			steps {
-				echo 'Hi, this is Papun'
-			}
-		}
-		stage('Confirm') {
-			steps {
-				input('Do you want to proceed')
-			}
-		}
-		
+	stages {		
 		stage('Clone') {
 			steps {
 				git branch: 'main', credentialsId: 'SpringGitHUb', url: 'https://github.com/papun/SprinPractice.git'
