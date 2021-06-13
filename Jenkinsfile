@@ -1,40 +1,33 @@
 pipeline {
 	agent any
-	stages {
-		stage('One') {
+	stages {		
+		stage('Clone') {
 			steps {
-				echo 'Hi, this is Soumitra from roytuts'
+				git branch: 'main', credentialsId: 'SpringGitHUb', url: 'https://github.com/papun/SprinPractice.git'
 			}
 		}
-		
-		stage('Two') {
-			steps {
-				input('Do you want to proceed?')
-			}
-		}
-		
 		stage('Build') {
-            steps {
-                bat './gradlew build'
-            }
-        }
-        
-        stage('Test') {
-            steps {
-                bat './gradlew test'
-            }
-        }
-        
-        stage('Check') {
-            steps {
-                bat './gradlew check'
-            }
-        }      
-		
-		stage('Five') {
 			steps {
-				echo 'Finished'
+				bat 'mvn clean package'
 			}
-		}		
+		}
+		stage('Display') {
+			steps {
+				bat 'cd'
+			}
+		}
+		stage('docker build') {
+			steps {
+				bat 'docker build -t myapp:v1 .'
+				
+				bat 'docker run -d -p 8081:8081 myapp:v1'
+			}
+		}
+		stage('Run') {
+			steps {
+				echo 'finished/////'
+			}
+		}
+		
 	}
 }
